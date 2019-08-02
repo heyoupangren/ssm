@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cwh.ssm.mapper.EmployeeMapper">
+
+
+    <!--public Employee getEmpById(Integer id);-->
+    <select id="getEmpById" resultType="com.cwh.ssm.beans.Employee" useCache="true">
+      select * from table_employee
+          where id = #{id}
+    </select>
+
+    <!--public List<Employee> getEmps();-->
+    <select id="getEmps" resultType="com.cwh.ssm.beans.Employee">
+        select * from table_employee
+    </select>
+
+</mapper>
