@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
     <settings>
         <!--是否开启自动驼峰命名规则-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -15,7 +16,20 @@
         <setting name="lazyLoadingEnabled" value="true "/>
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
+    <!--plugins:插件注册-->
+    <!--
+        创建动态代理是时候，是按照插件的配置顺序创建层层代理对象。
+        执行目标方法之后，按照逆向顺序执行。
+    -->
+    <plugins>
+        <plugin interceptor="com.cwh.ssm.plugin.MyFirstPlugin">
+            <property name="username" value="root"/>
+            <property name="password" value="123456"/>
+        </plugin>
+        <plugin interceptor="com.cwh.ssm.plugin.MySecondPlugin">
 
+        </plugin>
+    </plugins>
     <databaseIdProvider type="DB_VENDOR">
         <!--为不同的数据库厂商起别名-->
         <property name="MySQL" value="mysql"/>

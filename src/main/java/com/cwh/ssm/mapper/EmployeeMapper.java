@@ -70,4 +70,6 @@ public interface EmployeeMapper {
      * @mbg.generated Sat Aug 03 17:25:32 CST 2019
      */
     int updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);
+
+
 }

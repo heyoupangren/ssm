@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Cwh
@@ -18,6 +17,8 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
+
 
     public List<Employee> getEmps(){
         //查询的条件使用example进行封装
@@ -30,4 +31,13 @@ public class EmployeeService {
         example.or(criteria1);
         return employeeMapper.selectByExample(example);
     }
+
+    public List<Employee> getEmpById(Integer id) {
+        EmployeeExample example=new EmployeeExample();
+        EmployeeExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(id);
+        List<Employee> employees = employeeMapper.selectByExample(example);
+        return employees;
+    }
+
 }
